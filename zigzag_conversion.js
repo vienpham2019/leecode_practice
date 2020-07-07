@@ -17,7 +17,7 @@ var convert = function(s, numRows) {
         if(current_row + c_r < 0 || current_row + c_r === numRows){
             c_r *= -1
         }
-        if (i === gap_index ){
+        if(i === gap_index ){
             gap_index += numRows * 2 - 2 
         }
 
