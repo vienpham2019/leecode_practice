@@ -5,48 +5,57 @@
 //   [-1, -1, 2]
 // ]
 
-var threeSum = function(nums) {
-    if(nums.length < 3) return []
-    nums = nums.sort((a, b) => a - b)
-    let i = 0 
-    let current = 0 
-    let left = 1 
-    let right =  nums.length - 1 
+// var threeSum = function(nums) {
+//    nums = nums.sort((a,b) => a - b)
+//    let answer = []
+
+//    for(let i = 0 ; i < nums.length - 2 ; i ++){
+//        if(i === 0 || i > 0 && nums[i] !== nums[i - 1]){
+//         let low = i + 1 
+//         let high = nums.length - 1 
+//         let sum = 0 - nums[i]
+//             while(low < high){
+//                 if(sum === nums[low] + nums[high]){
+//                     answer.push([nums[i] , nums[low] , nums[high]])
+//                     while(low < high && nums[low] ===  nums[low + 1]) low ++
+//                     while(low < high && nums[high] ===  nums[high - 1]) high --
+//                     low ++ 
+//                     high -- 
+//                 }else if(nums[low] + nums[high] > sum) {
+//                     high -- 
+//                 }else{
+//                     low ++ 
+//                 }
+//             }
+//        }
+//    }
+
+//    return answer 
+// };
+
+const threeSum = (nums) => {
+    nums = nums.sort((a,b) => a - b)
     let answer = []
-
-    while(i < nums.length){
-        if(nums[current] === nums[i + 1]){
-            i ++
-        }else{
-            if(left > right || left === right){
-                i++
-                current = i
-                left = i + 1
-                right = nums.length - 1
-            }
-            let sum = nums[current] + nums[left] + nums[right]
-            if(sum === 0){
-                let next_3_sum = [nums[current] , nums[left], nums[right]]
-                if(!answer.find(a => a.join('') === next_3_sum.join(''))){
-                    answer.push(next_3_sum)
+    for(let i = 0; i < nums.length  - 2 ; i ++){
+        if(i === 0 || i > 0 && nums[i] !== nums[i - 1]){
+            let low = i + 1 
+            let high = nums.length - 1
+            let sum = 0 - nums[i]
+            while(low < high){
+                if(sum === nums[low] + nums[high]){
+                    answer.push([nums[i] , nums[low] , nums[high]])
+                    while(low < high && nums[low] === nums[low + 1]) low ++ 
+                    while(low < high && nums[high] === nums[high - 1]) high -- 
+                    low ++ 
+                    high -- 
+                }else if(nums[low] + nums[high] > sum){
+                    high -- 
+                }else{
+                    low ++ 
                 }
-                left ++ 
-                right -- 
-            }else if(sum > 0){
-                right -- 
-            }else{
-                left ++
-            }
-
-            if(left > right || left === right){
-                i++
-                current = i
-                left = i + 1
-                right = nums.length - 1
             }
         }
     }
-
-    return answer
-};
-console.log(threeSum([-2,-3,0,0,-2]))
+    return answer 
+}
+console.log(threeSum([-1, 0, 1, 2, -1, -4]))
