@@ -17,6 +17,7 @@ var mergeKLists = function(lists) {
     while(heap.length !== 0) {
         let min_lists = removeFromHeap(heap, (a,b) => a.data < b.data)
         current_node = current_node.next = min_lists.min 
+        console.log(min_lists.min.data , min_lists.min.next)
         heap = min_lists.array
         if(min_lists.min.next){
             heap = addToHeap(min_lists.min.next, heap , (a,b) => a.data < b.data)
@@ -34,14 +35,14 @@ var mergeKLists = function(lists) {
 
 const addToHeap = (node , array , method) => {
     array.push(node)
-    let i = array.length - 1
-    while(array[Math.floor(i / 2)] && method(array[i] , array[Math.floor(i / 2)])){
-        let current_node = array[i]
-        array[i] = array[Math.floor(i / 2)]
-        array[Math.floor(i / 2)] = current_node 
+    let i = array.length 
+    while(array[Math.floor(i / 2) - 1] && method(array[i - 1] , array[Math.floor(i / 2) - 1])){
+        let current_node = array[i - 1]
+        array[i - 1] = array[Math.floor(i / 2) - 1]
+        array[Math.floor(i / 2) - 1] = current_node
         i = Math.floor(i / 2)
     }
-    return array
+    return array 
 }
 
 const removeFromHeap = (array , method) => { 
@@ -90,8 +91,14 @@ const create_linked_lists = (array) => {
 }
 
 console.log(mergeKLists(
-    [create_linked_lists([1,4,5]) , 
-    create_linked_lists([1,3,4]) , 
-    create_linked_lists([2,6])]
+    [create_linked_lists([-4]),
+    create_linked_lists([-10, -6, -6]),
+    create_linked_lists([0,3]),
+    create_linked_lists([2]),
+    create_linked_lists([-10,-9,-8,3,4,4]),
+    create_linked_lists([-10,-10,-8,-6,-4,-3,1]),
+    create_linked_lists([2]),
+    create_linked_lists([-9,-4,-2,4,4]),
+    create_linked_lists([-4,0])]
     )
 )
