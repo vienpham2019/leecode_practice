@@ -34,7 +34,7 @@ MinStack.prototype.push = function(x) {
     this.stack.push(x)
     if(this.min_stack.isEmpty()){
         this.min_stack.push(x)
-    }else if(x < this.min_stack.peek()){
+    }else if(x <= this.min_stack.peek()){
         this.min_stack.push(x)
     }
 };
