@@ -14,6 +14,18 @@
 // Output: false
 // Explanation: You will always arrive at index 3 no matter what. Its maximum jump length is 0, which makes it impossible to reach the last index.
 
+//  0 1 2 3 4
+// [3,2,1,4,4]
+//          I
+// Most left index start at the last 
+// start pointer at second end 
+// if the pointer index + it value greaterthan or equal to the most left index if it true update most left index to the pointer index and move the pointer index down by one 
+
+// else if it the sum of index and it value is not >= most left index than skip 
+
+// at the end if the most left index at === 0 is mean at the begin than we find a path 
+
+
 const canJump = nums => {
     let p = nums.length - 2 
     let most_left = p + 1
