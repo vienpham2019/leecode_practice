@@ -36,4 +36,4 @@ const permute = nums => {
     return pem(nums , A , res , 0 , [])
 }
 
-console.log(permute([1,2,3,4]))
+console.log(permute([1,1,2]))
