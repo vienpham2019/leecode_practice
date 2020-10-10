@@ -38,3 +38,27 @@ const findTilt = root => {
     return this.tilt 
 }
 
+class treeNode {
+    constructor(val , left = null , right = null){
+        this.val = val 
+        this.left = left 
+        this.right = right 
+    }
+}
+
+const createTree = array => {
+    let root = new treeNode(array[0])
+    let queue = [root] 
+    let i = 1 
+    while(i < array.length){
+        let curr = queue.shift()
+        let left = array[i] ? new treeNode(array[i++]) : null 
+        let right = array[i] ? new treeNode(array[i++]) : null 
+        curr.left = left 
+        curr.right = right 
+        queue = [...queue, left , right]
+    }
+    return root 
+}
+let array = [3,2,4,3,1,6,5]
+console.log(findTilt(createTree(array)))
