@@ -39,10 +39,10 @@ const matrixReshape = (nums , r , c) => {
 
     if((curr_c * curr_r) !== (r * c)) return nums 
 
-    let answer = []
-    for(let i = 0 ; i < r ; i ++){
-        answer.push([])
-    }
+    let answer = Array.from(Array(r), () => new Array())
+    // for(let i = 0 ; i < r ; i ++){
+    //     answer.push([])
+    // }
 
     let row_num = 0 
     let col_num = 0 
@@ -61,4 +61,4 @@ const matrixReshape = (nums , r , c) => {
 
 let array = [[1,2,3,8],[4,5,6,7]]
 
-console.log(matrixReshape(array , 1 , 8))
+console.log(matrixReshape(array , 4 , 2))
