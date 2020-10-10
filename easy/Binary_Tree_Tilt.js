@@ -25,16 +25,16 @@
 // tilt += | sum of left - sum of right |
 
 const findTilt = root => {
-    this.titl = 0 
+    this.tilt = 0 
     const depth = node => {
         if(node === null) return 0 
         let left = depth(node.left)
         let right = depth(node.right)
 
-        this.titl += Math.abs(left - right)
+        this.tilt += Math.abs(left - right)
         return left + right + node.val
     }
     depth(root)
-    return this.titl 
+    return this.tilt 
 }
 
